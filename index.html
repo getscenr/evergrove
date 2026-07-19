@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--
+  Playtest build of Evergrove.
+  © 2026 — all rights reserved. No license granted.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F2620">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Evergrove">
+<title>Evergrove</title>
+<style>
+  :root{
+    --bg:#0F2620; --panel:#173A30; --panel2:#1C4638; --line:#2A5545; --line2:#356a55;
+    --ink:#FCFDF6; --mute:#AFC7BB; --dim:#84a595;
+    --green:#5FD08A; --gold:#F2B84B; --pink:#F07CA0; --teal:#5FC9C3;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:#050f0b;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;line-height:1.5;overscroll-behavior:none}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+
+  #app{height:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#0b1f19}
+
+  .ghead{flex:none;display:flex;align-items:center;justify-content:space-between;
+    padding:calc(env(safe-area-inset-top, 0px) + 10px) 16px 8px;z-index:60;position:relative}
+  .ghead .t{font-family:Georgia,serif;font-weight:700;font-size:17px}
+  .ghead .t span{display:block;font-family:-apple-system,sans-serif;font-weight:400;font-size:10.5px;color:var(--dim)}
+  .chip{font-size:10.5px;padding:3px 9px;border-radius:999px;background:rgba(95,208,138,.15);color:var(--green);
+    border:1px solid rgba(95,208,138,.3);font-weight:600}
+
+  .stage-wrap{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
+  .stage{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none;
+    background:linear-gradient(180deg,#0a1d17 0%,#0f2a21 40%,#123027 100%)}
+  .cam{position:absolute;inset:0;transition:transform .55s cubic-bezier(.22,.9,.3,1)}
+  .terr{position:absolute;left:-12%;right:-12%;border-radius:50%}
+  .fire{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(143,224,214,.55);
+    box-shadow:0 0 8px rgba(143,224,214,.7);animation:tw 3.2s ease-in-out infinite alternate}
+  @keyframes tw{from{opacity:.25}to{opacity:.9}}
+
+  .plant{position:absolute;cursor:pointer;transition:left .6s ease,top .6s ease,width .6s ease,height .6s ease,filter .4s ease,opacity .4s}
+  .plant .sw{width:100%;height:100%;transform-origin:50% 100%;position:relative}
+  .plant .art{position:absolute;inset:0}
+  .plant svg{width:100%;height:100%;display:block;pointer-events:none;transform-origin:50% 100%}
+  .plant .psh{position:absolute;left:14%;bottom:-4px;width:72%;height:12px;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,.4),transparent 70%)}
+  @keyframes sw0{from{transform:rotate(-1deg)}to{transform:rotate(1.2deg)}}
+  @keyframes sw1{from{transform:rotate(-1.7deg)}to{transform:rotate(1.5deg)}}
+  @keyframes sw2{from{transform:rotate(-2.2deg)}to{transform:rotate(2deg)}}
+  /* ready-to-bloom telegraph (spec §3): subtle pulse on the artwork */
+  .plant.ready svg{animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.035);filter:brightness(1.14)}}
+
+  .hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:10.5px;
+    color:rgba(255,255,255,.4);z-index:50;pointer-events:none;transition:.3s}
+
+  /* ---------- bloom wave (stagger = CSS animation-delay via --wd) ---------- */
+  .plant.wavec .art.cur{animation:waveOut .45s ease var(--wd,0s) forwards}
+  .plant.wavec .art.next{opacity:0;animation:waveIn .7s cubic-bezier(.34,1.56,.64,1) var(--wd,0s) forwards}
+  @keyframes waveOut{to{opacity:0}}
+  @keyframes waveIn{0%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1.07)}100%{opacity:1;transform:scale(1)}}
+  .plant.waves svg{animation:shimmer .9s ease var(--wd,0s)}
+  @keyframes shimmer{40%{filter:brightness(1.35) saturate(1.15)}}
+
+  /* ---------- rain fx ---------- */
+  .rainfx{position:absolute;pointer-events:none;z-index:56;transition:opacity .35s}
+  .rainfx.fade{opacity:0}
+  .rainfx .swell{position:absolute;left:0;top:0;width:26px;height:26px;margin:-13px;border-radius:50%;
+    border:2px solid rgba(143,224,214,.4);animation:swellA 1.15s ease-out infinite}
+  @keyframes swellA{0%{transform:scale(.4);opacity:.8}100%{transform:scale(3.4);opacity:0}}
+  .rainfx .mist{position:absolute;left:0;top:0;width:120px;height:120px;margin:-60px;border-radius:50%;
+    background:radial-gradient(circle,rgba(143,224,214,.14),transparent 70%);animation:mistA 1.4s ease-in-out infinite alternate}
+  @keyframes mistA{from{transform:scale(.85);opacity:.7}to{transform:scale(1.1);opacity:1}}
+  .rainfx .drop{position:absolute;width:2.5px;height:13px;border-radius:2px;opacity:0;
+    background:linear-gradient(rgba(143,224,214,0),rgba(143,224,214,.8));
+    animation:dropA var(--dd,.9s) linear var(--ds,0s) infinite}
+  @keyframes dropA{0%{transform:translateY(-85px);opacity:0}25%{opacity:.85}90%{transform:translateY(34px);opacity:.15}100%{transform:translateY(40px);opacity:0}}
+
+  /* ---------- first-bloom celebration (lovely, not loud) ---------- */
+  .celebfx{position:absolute;inset:0;pointer-events:none;z-index:5}
+  .celebfx .cring{position:absolute;left:50%;top:40%;width:14px;height:14px;margin:-7px;border-radius:50%;
+    border:2px solid rgba(242,184,75,.8);opacity:0;animation:cring 1.1s ease-out var(--cd,0s) forwards}
+  @keyframes cring{0%{opacity:0;transform:scale(.4)}25%{opacity:.9}100%{opacity:0;transform:scale(3.2)}}
+  .celebfx i{position:absolute;left:50%;top:40%;width:5px;height:8px;margin:-4px -2.5px;background:var(--gold);
+    border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0;rotate:var(--pa,0deg);
+    animation:cpetal 1.4s ease-out var(--cd,0s) forwards}
+  @keyframes cpetal{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.95}100%{opacity:0;transform:translateY(-34px) scale(1)}}
+
+  /* ---------- toasts ---------- */
+  .toasts{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:95;display:flex;
+    flex-direction:column;gap:6px;align-items:center;pointer-events:none;width:max-content;max-width:92%}
+  .toast{background:rgba(23,58,48,.96);border:1px solid var(--line);color:var(--ink);font-size:12.5px;
+    padding:7px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.4);opacity:0;
+    transform:translateY(-8px);transition:.35s;text-align:center}
+  .toast.on{opacity:1;transform:none}
+  .toast.gold{border-color:rgba(242,184,75,.5);color:var(--gold)}
+
+  /* ---------- Focus Rings on the card ---------- */
+  .rings-head{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--dim);
+    text-transform:uppercase;letter-spacing:1px;margin:10px 0 6px;border-top:1px dashed var(--line);padding-top:9px}
+  .rings-head .counters{font-family:Georgia,serif;text-transform:none;letter-spacing:.5px;color:var(--mute);font-size:12px}
+  .rings{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+  .ring{border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--ink);
+    font:inherit;text-align:left;padding:7px 10px;cursor:pointer;display:flex;flex-direction:column;gap:1px;transition:.15s}
+  .ring b{font-size:12.5px}
+  .ring span{font-size:9.8px;color:var(--mute);line-height:1.35}
+  .ring.ready{border-color:rgba(95,208,138,.45);background:rgba(95,208,138,.10)}
+  .ring.ready b{color:var(--green)}
+  .ring.ready:hover{filter:brightness(1.12)}
+  .ring.done{opacity:.75}
+  .ring.done b{color:var(--teal)}
+  .ring.locked,.ring.cap{opacity:.55}
+  .ring.locked span,.ring.cap span{color:var(--dim)}
+
+  /* gesture prompt strip (card collapses while a gesture is armed) */
+  .card.gesturing{padding:10px 14px}
+  .gprompt{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .gprompt b{font-size:13.5px;display:block}
+  .gprompt span{font-size:11.5px;color:var(--gold)}
+  .gprompt .x{position:static;flex:none}
+
+  /* ---------- gesture guides (ghost visuals, progress = feedback) ---------- */
+  .guide{position:absolute;width:160px;height:160px;margin:-80px 0 0 -80px;pointer-events:none;z-index:70}
+  .guide svg{width:100%;height:100%;overflow:visible}
+  .guide .ghost{fill:none;stroke:rgba(252,253,246,.28);stroke-width:2.5;stroke-dasharray:5 7;stroke-linecap:round;
+    animation:guidespin 9s linear infinite;transform-origin:center}
+  @keyframes guidespin{to{transform:rotate(360deg)}}
+  .guide .prog{fill:none;stroke:var(--green);stroke-width:3.5;stroke-linecap:round;
+    transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .08s linear}
+  .guide .prog.devhold{stroke:var(--gold)}
+  .guide .prog.filling{transition:stroke-dashoffset 2s linear;stroke-dashoffset:0 !important}
+  .guide .cut{stroke:rgba(252,253,246,.3);stroke-width:3;stroke-dasharray:6 6;stroke-linecap:round}
+  .guide .cut.on{stroke:var(--green);stroke-dasharray:none}
+  .guide .gdrops{position:absolute;left:50%;top:-16px;transform:translateX(-50%);display:flex;gap:8px}
+  .guide .gdrops i{width:11px;height:14px;border:1.5px solid rgba(143,224,214,.5);background:transparent;
+    border-radius:50% 50% 50% 50%/40% 40% 60% 60%;transition:.25s}
+  .guide .gdrops i.on{background:rgba(143,224,214,.85);border-color:transparent;transform:translateY(4px)}
+  body.rm .guide .ghost{animation:none}
+  body.rm .guide .prog{transition:none}
+  body.rm .guide .prog.filling{transition:stroke-dashoffset 2s linear} /* progress is feedback, not decoration */
+
+  /* ---------- bond effects (deterministic; §5c) ---------- */
+  .plant.b1 svg{filter:brightness(1.05) drop-shadow(0 0 3px rgba(252,253,246,.25))}
+  .plant.b2 svg{filter:brightness(1.05) saturate(1.22) drop-shadow(0 0 3px rgba(252,253,246,.28))}
+  .plant.b3 svg{filter:brightness(1.07) saturate(1.28) drop-shadow(0 0 4px rgba(242,184,75,.32))}
+  .bspark{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(242,184,75,.9);
+    box-shadow:0 0 6px rgba(242,184,75,.8);animation:bsp 2.8s ease-in-out infinite alternate;pointer-events:none}
+  @keyframes bsp{from{opacity:.15;transform:scale(.7)}to{opacity:.95;transform:scale(1.15)}}
+  body.rm .bspark{animation:none;opacity:.6} /* sparkle → static flourish */
+  .card h2.b3name{color:var(--gold)}
+
+  /* ---------- Care Sheet ---------- */
+  .sheet{position:absolute;left:10px;right:10px;bottom:10px;z-index:85;background:rgba(23,58,48,.98);
+    border:1px solid var(--line);border-radius:20px;padding:16px 18px 14px;backdrop-filter:blur(8px);
+    transform:translateY(130%);opacity:0;visibility:hidden;pointer-events:none;max-height:72%;overflow-y:auto;
+    transition:transform .5s cubic-bezier(.22,.9,.3,1),opacity .4s,visibility .4s;box-shadow:0 -10px 40px rgba(0,0,0,.5)}
+  .sheet.show{transform:none;opacity:1;visibility:visible;pointer-events:auto}
+  .sheet .x{position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+    background:var(--panel2);color:var(--ink);font-size:13px;cursor:pointer}
+  .sheet h2{font-size:20px;margin:0 0 8px}
+  .ssec{border-top:1px dashed var(--line);padding:8px 0 4px;margin-top:4px}
+  .stitle{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+  .srow{display:flex;align-items:baseline;gap:8px;font-size:12.5px;margin:5px 0;flex-wrap:wrap}
+  .srow b{min-width:86px;font-size:12.5px}
+  .srow .scount{font-family:Georgia,serif;color:var(--gold);min-width:34px}
+  .srow .spay{color:var(--mute);font-size:11.5px;flex:1}
+  .srow .nest{width:100%;font-size:10px;color:var(--dim);padding-left:86px}
+  .srow .btn{flex:none;padding:5px 12px;font-size:11.5px}
+  .btn.sec{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+
+  .careb{font:inherit;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;cursor:pointer;
+    background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+  .careb.badge{background:rgba(95,208,138,.15);color:var(--green);border-color:rgba(95,208,138,.35);
+    animation:badgeglow 2.6s ease-in-out infinite alternate}
+  @keyframes badgeglow{from{box-shadow:none}to{box-shadow:0 0 8px rgba(95,208,138,.35)}}
+  body.rm .careb.badge{animation:none}
+
+  /* ---------- empty-slot affordance (plantable, no tutorial needed) ---------- */
+  .slotmark{position:absolute;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .slotmark::before{content:'';position:absolute;inset:8% 4%;border:1.5px dashed rgba(252,253,246,.28);
+    border-radius:50%;background:radial-gradient(ellipse at 50% 80%,rgba(20,53,40,.55),transparent 70%)}
+  .slotmark span{position:relative;color:rgba(252,253,246,.5);font-size:19px;font-weight:300;
+    animation:slotbreathe 3.2s ease-in-out infinite alternate}
+  @keyframes slotbreathe{from{opacity:.35;transform:scale(.94)}to{opacity:.8;transform:scale(1.05)}}
+  body.rm .slotmark span{animation:none;opacity:.55}
+  .slotmark:hover span{color:var(--green)}
+
+  /* the small planting moment */
+  .plant.nestle .sw{animation:nestle .9s cubic-bezier(.34,1.4,.5,1)}
+  @keyframes nestle{0%{transform:scale(.2) translateY(14px);opacity:0}55%{transform:scale(1.08) translateY(-3px);opacity:1}100%{transform:scale(1) translateY(0)}}
+  body.rm .plant.nestle .sw{animation:rmFadeIn .25s linear}
+
+  /* ---------- calendar strip ---------- */
+  .calstrip{display:flex;gap:5px}
+  .cal{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:9px;text-align:center;
+    padding:6px 2px 4px;display:flex;flex-direction:column;gap:1px;min-width:0}
+  .cal i{font-style:normal;font-size:12px}
+  .cal b{font-size:9px;color:var(--mute);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cal span{font-size:8.5px;color:var(--dim)}
+  .cal.now{border-color:rgba(242,184,75,.55);background:rgba(242,184,75,.10)}
+  .cal.now.got{border-color:rgba(95,208,138,.5);background:rgba(95,208,138,.10)}
+  .cal.now.got i::after{content:' ✓'}
+
+  /* ---------- satchel rows ---------- */
+  .seedrow{display:flex;align-items:center;gap:10px;width:100%;background:var(--panel2);border:1px solid var(--line);
+    border-radius:12px;padding:7px 10px;margin:5px 0;font:inherit;color:var(--ink);cursor:pointer;text-align:left;transition:.15s}
+  .seedrow:hover{border-color:var(--line2);filter:brightness(1.08)}
+  .sthumb{width:38px;height:48px;flex:none;background:radial-gradient(circle at 50% 62%,#12332a,#0e281f);
+    border-radius:8px;border:1px solid var(--line);overflow:hidden}
+  .sthumb svg{width:100%;height:100%}
+  .sinfo{flex:1;min-width:0}
+  .sinfo b{font-size:13px;display:block}
+  .sinfo i{font-style:normal;font-size:10.5px;color:var(--dim)}
+  .sgo{font-size:11px;color:var(--green);font-weight:700}
+
+  /* ---------- mini-Codex ---------- */
+  .codex{position:absolute;inset:0;z-index:75;background:linear-gradient(180deg,#0a1d17,#0f2a21);
+    display:none;flex-direction:column;padding:12px 12px 6px}
+  .codex.show{display:flex}
+  .chead{flex:none;display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:2px 4px 8px}
+  .chead h2{font-size:17px;margin:0}
+  .chead span{font-size:10.5px;color:var(--dim)}
+  .clist{flex:1;overflow-y:auto;padding-bottom:8px}
+  .crow2{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+    border-radius:11px;padding:6px 10px;margin:4px 0}
+  .crow2 .cthumb{width:34px;height:44px;flex:none;background:radial-gradient(circle at 50% 62%,#12332a,#0e281f);
+    border-radius:7px;border:1px solid var(--line);overflow:hidden}
+  .crow2 .cthumb svg{width:100%;height:100%}
+  .crow2.unknown .cthumb{filter:brightness(.25) saturate(0)}
+  .crow2.owned .cthumb{filter:brightness(.6) saturate(.5)}
+  .crow2 .cinfo{flex:1;min-width:0}
+  .crow2 .cinfo b{font-size:12.5px;display:block}
+  .crow2 .cinfo i{font-style:normal;font-size:10px;color:var(--dim)}
+  .cchip{font-size:9px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.3px;flex:none}
+  .cchip.bl{background:rgba(242,184,75,.15);color:var(--gold);border:1px solid rgba(242,184,75,.35)}
+  .cchip.pl{background:rgba(95,208,138,.12);color:var(--green);border:1px solid rgba(95,208,138,.3)}
+  .cchip.ow{background:rgba(95,201,195,.12);color:var(--teal);border:1px solid rgba(95,201,195,.3)}
+  .cchip.un{background:rgba(255,255,255,.04);color:var(--dim);border:1px solid var(--line)}
+
+  /* ---------- dev panel (?dev=1) ---------- */
+  .devp{position:absolute;top:8px;left:8px;z-index:120;background:rgba(5,15,11,.92);border:1px solid var(--line);
+    border-radius:10px;padding:8px 9px;font-size:10.5px;color:var(--mute);width:158px}
+  .devp b{color:var(--gold);font-size:9.5px;letter-spacing:1px}
+  .devp .dnow{margin-top:2px;font-size:10px;color:var(--dim)}
+  .devp .row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .devp button{font:inherit;font-size:10px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+    border-radius:6px;padding:3px 6px;cursor:pointer}
+
+  /* ---------- reduce motion (spec §3): no parallax/sway/stagger ---------- */
+  body.rm .sw{animation:none !important}
+  body.rm .fire{animation:none;opacity:.45}
+  body.rm .plant.ready svg{animation:none;filter:drop-shadow(0 0 4px rgba(242,184,75,.55))}
+  body.rm .cam{transition:none}
+  body.rm .plant.wavec .art.cur{animation:rmFadeOut .22s linear forwards}
+  body.rm .plant.wavec .art.next{animation:rmFadeIn .22s linear forwards}
+  @keyframes rmFadeOut{to{opacity:0}}
+  @keyframes rmFadeIn{from{opacity:0}to{opacity:1}}
+  body.rm .plant.waves svg{animation:none}
+  body.rm .rainfx .drop,body.rm .rainfx .mist{display:none}
+  body.rm .rainfx .swell{animation:none;opacity:.5;transform:scale(1.6)}
+  body.rm .celebfx i{display:none}
+  body.rm .celebfx .cring{animation-duration:.5s}
+
+  /* rising plant card */
+  .card{position:absolute;left:10px;right:10px;bottom:10px;z-index:80;background:rgba(23,58,48,.97);
+    border:1px solid var(--line);border-radius:20px;padding:16px 18px 14px;backdrop-filter:blur(8px);
+    transform:translateY(130%);opacity:0;visibility:hidden;pointer-events:none;
+    transition:transform .5s cubic-bezier(.22,.9,.3,1),opacity .4s,visibility .4s;box-shadow:0 -10px 40px rgba(0,0,0,.45)}
+  .card.show{transform:none;opacity:1;visibility:visible;pointer-events:auto}
+  .card .x{position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+    background:var(--panel2);color:var(--ink);font-size:13px;cursor:pointer}
+  .card h2{font-size:22px;margin:0 0 2px}
+  .crow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:11px;color:var(--mute);margin-bottom:6px}
+  .rar{font-weight:700;letter-spacing:.4px;text-transform:uppercase;font-size:10px}
+  .flag{font-size:9.5px;padding:1px 7px;border-radius:999px;font-weight:700;letter-spacing:.3px}
+  .flag.cs{background:rgba(242,184,75,.16);color:var(--gold);border:1px solid rgba(242,184,75,.35)}
+  .flag.frt{background:rgba(240,124,160,.14);color:var(--pink);border:1px solid rgba(240,124,160,.3)}
+  .flag.anc{background:rgba(95,201,195,.14);color:var(--teal);border:1px solid rgba(95,201,195,.3)}
+  .credit{font-size:11.5px;margin:2px 0 8px;color:var(--dim)}
+  .tchips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+  .tchip{font-size:10.5px;padding:2px 8px;border-radius:999px;background:rgba(95,208,138,.12);color:var(--green);border:1px solid rgba(95,208,138,.22)}
+  .adds{font-size:11.5px;color:var(--mute);border-top:1px dashed var(--line);padding-top:8px}
+  .adds b{color:var(--green)}
+  .adds .pair{color:var(--gold)}
+  .stage-line{font-size:11.5px;color:var(--mute);margin:6px 0 10px}
+  .stage-line b{color:var(--ink)}
+  .ready-note{color:var(--gold)}
+  .btns{display:flex;gap:8px}
+  .btn{flex:1;border:none;border-radius:12px;padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
+  .btn.pri{background:var(--green);color:#0c2019}
+  .btn.pri:disabled{background:#2c5747;color:#7ea093;cursor:default}
+  .btn:hover:not(:disabled){filter:brightness(1.08)}
+
+  /* bottom nav — non-functional chrome, Grove/Codex only (spec §7) */
+  .nav{height:calc(58px + env(safe-area-inset-bottom, 0px));padding-bottom:env(safe-area-inset-bottom, 0px);
+    flex:none;background:rgba(10,26,20,.96);border-top:1px solid var(--line);display:flex;z-index:90;position:relative}
+  .nav div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    font-size:9.5px;color:var(--dim)}
+  .nav div span{font-size:17px}
+  .nav div.on{color:var(--green)}
+
+  #boot-note{position:absolute;left:16px;right:16px;top:20%;z-index:100;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="ghead">
+    <div class="t">Your Grove<span id="subtitle">Phase 0 · the Founding 45</span></div>
+    <div style="display:flex;gap:6px;align-items:center">
+      <button class="careb badge" id="satchelBtn" hidden>🌱 0</button>
+      <div class="chip" id="chip">…</div>
+      <button class="careb" id="careBtn">🌿 Care</button>
+    </div>
+  </div>
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+      <div class="cam" id="cam"></div>
+      <div class="hint" id="hint">hold anywhere to rain · tap a plant · drag to look</div>
+    </div>
+    <div class="card" id="card"></div>
+    <div class="sheet" id="sheet"></div>
+    <div class="codex" id="codex"></div>
+    <div class="toasts" id="toasts"></div>
+    <div id="boot-note" hidden></div>
+  </div>
+  <div class="nav">
+    <div class="on" id="navGrove"><span>🌱</span>Grove</div>
+    <div id="navCodex"><span>📖</span>Codex</div>
+  </div>
+</div>
+<script>
+  // Module scripts + fetch are blocked on file:// — say so kindly instead of a blank screen.
+  if (location.protocol === 'file:') {
+    var n = document.getElementById('boot-note');
+    n.hidden = false;
+    n.textContent = 'Browsers block local data files when opened directly. Run "npx serve" in this folder and open the printed URL instead.';
+  }
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

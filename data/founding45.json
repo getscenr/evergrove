@@ -1,0 +1,1127 @@
+[
+  {
+    "name": "Sunflower",
+    "region": "North America",
+    "biome": "Meadow",
+    "bloomForm": "Radial",
+    "signatureEssence": "Fast-growing",
+    "cornerstonePair": null,
+    "traits": [
+      "Fast-growing",
+      "Pollen-glow",
+      "Sun-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F2B84B",
+      "accent": "#7A4B2A",
+      "shape": "radial",
+      "petals": 14,
+      "glow": false
+    }
+  },
+  {
+    "name": "Oxeye Daisy",
+    "region": "Europe",
+    "biome": "Meadow",
+    "bloomForm": "Radial",
+    "signatureEssence": "Radial form",
+    "cornerstonePair": null,
+    "traits": [
+      "Radial",
+      "Creeping",
+      "Sun-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F4F1E4",
+      "accent": "#F2C55B",
+      "shape": "radial",
+      "petals": 16,
+      "glow": false
+    }
+  },
+  {
+    "name": "Marigold",
+    "region": "Mexico · India",
+    "biome": "Meadow",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Fragrant",
+    "cornerstonePair": null,
+    "traits": [
+      "Fragrant",
+      "Everblooming",
+      "Heat-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F0913F",
+      "accent": "#F2C55B",
+      "shape": "cluster",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Field Poppy",
+    "region": "Mediterranean",
+    "biome": "Meadow",
+    "bloomForm": "Cup",
+    "signatureEssence": "Cup form",
+    "cornerstonePair": null,
+    "traits": [
+      "Cup",
+      "Windborne",
+      "Petal-fall"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#E8586A",
+      "accent": "#2b1418",
+      "shape": "cup",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Cornflower",
+    "region": "Europe",
+    "biome": "Meadow",
+    "bloomForm": "Star",
+    "signatureEssence": "Star form",
+    "cornerstonePair": "Wind-firm",
+    "traits": [
+      "Star",
+      "Wind-firm",
+      "Windborne"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#5B7FE0",
+      "accent": "#B9CDF2",
+      "shape": "star",
+      "petals": 12,
+      "glow": false
+    }
+  },
+  {
+    "name": "Wild Strawberry",
+    "region": "Worldwide",
+    "biome": "Meadow",
+    "bloomForm": "Radial",
+    "signatureEssence": "Fruiting",
+    "cornerstonePair": null,
+    "traits": [
+      "Fruiting",
+      "Creeping",
+      "Sun-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F6F1E8",
+      "accent": "#E8586A",
+      "shape": "radial",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Tomato Blossom",
+    "region": "Andes",
+    "biome": "Meadow",
+    "bloomForm": "Star",
+    "signatureEssence": "Sun-loving",
+    "cornerstonePair": null,
+    "traits": [
+      "Sun-loving",
+      "Fruiting",
+      "Vining"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F2D24B",
+      "accent": "#C98A2E",
+      "shape": "star",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Chamomile",
+    "region": "Europe · Egypt",
+    "biome": "Meadow",
+    "bloomForm": "Radial",
+    "signatureEssence": "Everblooming",
+    "cornerstonePair": null,
+    "traits": [
+      "Everblooming",
+      "Fragrant",
+      "Drought-hardy"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F6F3E7",
+      "accent": "#F2C55B",
+      "shape": "radial",
+      "petals": 13,
+      "glow": false
+    }
+  },
+  {
+    "name": "Lavender",
+    "region": "Provence",
+    "biome": "Highland",
+    "bloomForm": "Spike",
+    "signatureEssence": "Spike form",
+    "cornerstonePair": "Drought-hardy",
+    "traits": [
+      "Spike",
+      "Drought-hardy",
+      "Fragrant"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#B58BE0",
+      "accent": "#8E6FD0",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Edelweiss",
+    "region": "The Alps",
+    "biome": "Highland",
+    "bloomForm": "Star",
+    "signatureEssence": "Alpine-hardy",
+    "cornerstonePair": "Dwarf",
+    "traits": [
+      "Alpine-hardy",
+      "Dwarf",
+      "Star"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#6E9A76",
+      "bloom": "#EDEAD6",
+      "accent": "#D8D2A8",
+      "shape": "star",
+      "petals": 10,
+      "glow": false
+    }
+  },
+  {
+    "name": "Scots Thistle",
+    "region": "Scotland",
+    "biome": "Highland",
+    "bloomForm": "Star",
+    "signatureEssence": "Windborne",
+    "cornerstonePair": null,
+    "traits": [
+      "Windborne",
+      "Drought-hardy",
+      "Star"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#5B8A6B",
+      "bloom": "#9E7BD6",
+      "accent": "#C9B6EC",
+      "shape": "star",
+      "petals": 12,
+      "glow": false
+    }
+  },
+  {
+    "name": "Heather",
+    "region": "British moors",
+    "biome": "Highland",
+    "bloomForm": "Spike",
+    "signatureEssence": "Creeping",
+    "cornerstonePair": null,
+    "traits": [
+      "Creeping",
+      "Wind-firm",
+      "Spike"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#5B8A6B",
+      "bloom": "#D07CB0",
+      "accent": "#F0C6E0",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Trumpet Gentian",
+    "region": "The Alps",
+    "biome": "Highland",
+    "bloomForm": "Trumpet",
+    "signatureEssence": "Trumpet form",
+    "cornerstonePair": null,
+    "traits": [
+      "Trumpet",
+      "Alpine-hardy",
+      "Dwarf"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#2E5FD0",
+      "accent": "#8FB4F2",
+      "shape": "trumpet",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Saffron Crocus",
+    "region": "Kashmir · Iran",
+    "biome": "Highland",
+    "bloomForm": "Cup",
+    "signatureEssence": "Pollen-glow",
+    "cornerstonePair": null,
+    "traits": [
+      "Pollen-glow",
+      "Cup",
+      "Sun-loving"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#9E7BD6",
+      "accent": "#F2A83B",
+      "shape": "cup",
+      "petals": 6,
+      "glow": false
+    }
+  },
+  {
+    "name": "Coffee Blossom",
+    "region": "Ethiopia",
+    "biome": "Highland",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Perfume-cloud",
+    "cornerstonePair": null,
+    "traits": [
+      "Perfume-cloud",
+      "Fruiting",
+      "Fragrant"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F4F1E8",
+      "accent": "#EBD9A0",
+      "shape": "cluster",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Bluebell",
+    "region": "British Isles",
+    "biome": "Frostwood",
+    "bloomForm": "Bell",
+    "signatureEssence": "Bell form",
+    "cornerstonePair": "Frost-tolerant",
+    "traits": [
+      "Bell",
+      "Frost-tolerant",
+      "Fragrant"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#6FA8E0",
+      "accent": "#DCEBFA",
+      "shape": "bell",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Foxglove",
+    "region": "Europe woodland",
+    "biome": "Frostwood",
+    "bloomForm": "Bell",
+    "signatureEssence": "Towering",
+    "cornerstonePair": "Night-blooming",
+    "traits": [
+      "Towering",
+      "Night-blooming",
+      "Shade-dwelling"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#F07CA0",
+      "accent": "#FBE3ED",
+      "shape": "bell",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Snowdrop",
+    "region": "Europe",
+    "biome": "Frostwood",
+    "bloomForm": "Bell",
+    "signatureEssence": "Frost-sparkle",
+    "cornerstonePair": null,
+    "traits": [
+      "Frost-sparkle",
+      "Frost-tolerant",
+      "Bell"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#EAF3EC",
+      "accent": "#CFE6D9",
+      "shape": "bell",
+      "petals": null,
+      "glow": true
+    }
+  },
+  {
+    "name": "Hellebore",
+    "region": "Balkans",
+    "biome": "Frostwood",
+    "bloomForm": "Cup",
+    "signatureEssence": "Perennial",
+    "cornerstonePair": null,
+    "traits": [
+      "Perennial",
+      "Everblooming",
+      "Frost-tolerant"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#C7D9B0",
+      "accent": "#EDEAD6",
+      "shape": "cup",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Lily of the Valley",
+    "region": "Europe · Asia",
+    "biome": "Frostwood",
+    "bloomForm": "Bell",
+    "signatureEssence": "Shade-dwelling",
+    "cornerstonePair": null,
+    "traits": [
+      "Shade-dwelling",
+      "Fragrant",
+      "Creeping"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#F4F1E8",
+      "accent": "#DDEAD2",
+      "shape": "bell",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Boreal Pine",
+    "region": "Worldwide boreal",
+    "biome": "Frostwood",
+    "bloomForm": "Cone",
+    "signatureEssence": "Cone form",
+    "cornerstonePair": null,
+    "traits": [
+      "Cone",
+      "Evergreen",
+      "Towering"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": true,
+    "render": {
+      "stem": "#2F6E45",
+      "bloom": "#E7C463",
+      "accent": "#F2E2A0",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Winterberry Holly",
+    "region": "Europe",
+    "biome": "Frostwood",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Evergreen",
+    "cornerstonePair": null,
+    "traits": [
+      "Evergreen",
+      "Fruiting",
+      "Frost-tolerant"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#2F6E45",
+      "bloom": "#E8586A",
+      "accent": "#F0A9B4",
+      "shape": "cluster",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Snapdragon",
+    "region": "Mediterranean",
+    "biome": "Frostwood",
+    "bloomForm": "Spike",
+    "signatureEssence": "Color-shifting",
+    "cornerstonePair": null,
+    "traits": [
+      "Color-shifting",
+      "Spike",
+      "Fragrant"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#EE6C9A",
+      "accent": "#F2B84B",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Wild Iris",
+    "region": "France · Japan",
+    "biome": "Wetland",
+    "bloomForm": "Radial",
+    "signatureEssence": "Water-rooted",
+    "cornerstonePair": "Radial fan",
+    "traits": [
+      "Water-rooted",
+      "Color-shifting",
+      "Radial fan"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#8E6FD0",
+      "accent": "#F2D24B",
+      "shape": "radial",
+      "petals": 6,
+      "glow": false
+    }
+  },
+  {
+    "name": "Lady Fern",
+    "region": "Worldwide",
+    "biome": "Wetland",
+    "bloomForm": "Frond",
+    "signatureEssence": "Frond form",
+    "cornerstonePair": "Climbing",
+    "traits": [
+      "Frond",
+      "Climbing",
+      "Shade-dwelling"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": true,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#5FB07A",
+      "accent": "#5FB07A",
+      "shape": "frond",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Cattail",
+    "region": "Worldwide marsh",
+    "biome": "Wetland",
+    "bloomForm": "Spike",
+    "signatureEssence": "Seed-drift",
+    "cornerstonePair": null,
+    "traits": [
+      "Seed-drift",
+      "Towering",
+      "Water-rooted"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#8A5A34",
+      "accent": "#C69A6A",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Forget-me-not",
+    "region": "Worldwide",
+    "biome": "Wetland",
+    "bloomForm": "Radial",
+    "signatureEssence": "Water-loving",
+    "cornerstonePair": null,
+    "traits": [
+      "Water-loving",
+      "Creeping",
+      "Radial"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#7FB0EC",
+      "accent": "#F2D24B",
+      "shape": "radial",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Marsh Marigold",
+    "region": "Northern wetlands",
+    "biome": "Wetland",
+    "bloomForm": "Cup",
+    "signatureEssence": "Nectar-rich",
+    "cornerstonePair": null,
+    "traits": [
+      "Nectar-rich",
+      "Cup",
+      "Water-rooted"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F2C233",
+      "accent": "#EFA92E",
+      "shape": "cup",
+      "petals": 6,
+      "glow": false
+    }
+  },
+  {
+    "name": "Cushion Moss",
+    "region": "Japan · worldwide",
+    "biome": "Wetland",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Spore-glow",
+    "cornerstonePair": null,
+    "traits": [
+      "Spore-glow",
+      "Creeping",
+      "Shade-dwelling"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": true,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#6FB98A",
+      "accent": "#B7E6C2",
+      "shape": "cluster",
+      "petals": null,
+      "glow": true
+    }
+  },
+  {
+    "name": "Papyrus",
+    "region": "Egypt",
+    "biome": "Wetland",
+    "bloomForm": "Spike",
+    "signatureEssence": "Bog-rooted",
+    "cornerstonePair": null,
+    "traits": [
+      "Bog-rooted",
+      "Towering",
+      "Wind-firm"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#8FB77A",
+      "accent": "#C7DBA0",
+      "shape": "spike",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Sacred Lotus",
+    "region": "Egypt · India · Asia",
+    "biome": "Tidepool",
+    "bloomForm": "Cup",
+    "signatureEssence": "Night-blooming",
+    "cornerstonePair": null,
+    "traits": [
+      "Night-blooming",
+      "Cup",
+      "Water-rooted"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F3B7CE",
+      "accent": "#F2E27A",
+      "shape": "cup",
+      "petals": 7,
+      "glow": false
+    }
+  },
+  {
+    "name": "Water Lily",
+    "region": "Worldwide",
+    "biome": "Tidepool",
+    "bloomForm": "Radial",
+    "signatureEssence": "Dew-jeweled",
+    "cornerstonePair": null,
+    "traits": [
+      "Dew-jeweled",
+      "Water-rooted",
+      "Radial"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F6E9F0",
+      "accent": "#F2D24B",
+      "shape": "radial",
+      "petals": 12,
+      "glow": false
+    }
+  },
+  {
+    "name": "Sea Lavender",
+    "region": "Coastal Europe",
+    "biome": "Tidepool",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Cluster form",
+    "cornerstonePair": "Salt-tolerant",
+    "traits": [
+      "Cluster",
+      "Salt-tolerant",
+      "Windborne"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": true,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#5B8A6B",
+      "bloom": "#C79BE0",
+      "accent": "#E6D2F2",
+      "shape": "cluster",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Bird of Paradise",
+    "region": "South Africa",
+    "biome": "Tidepool",
+    "bloomForm": "Star",
+    "signatureEssence": "Iridescent",
+    "cornerstonePair": null,
+    "traits": [
+      "Iridescent",
+      "Color-shifting",
+      "Heat-loving"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#F0913F",
+      "accent": "#3E7FD0",
+      "shape": "star",
+      "petals": 7,
+      "glow": false
+    }
+  },
+  {
+    "name": "Hibiscus",
+    "region": "Hawaiʻi · Malaysia",
+    "biome": "Tidepool",
+    "bloomForm": "Trumpet",
+    "signatureEssence": "Trumpet bloom",
+    "cornerstonePair": null,
+    "traits": [
+      "Trumpet",
+      "Fast-growing",
+      "Nectar-rich"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#E8586A",
+      "accent": "#F2D24B",
+      "shape": "trumpet",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Moonflower",
+    "region": "The Americas",
+    "biome": "Tidepool",
+    "bloomForm": "Trumpet",
+    "signatureEssence": "Bioluminescent",
+    "cornerstonePair": null,
+    "traits": [
+      "Bioluminescent",
+      "Climbing",
+      "Night-blooming"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#EAF3EC",
+      "accent": "#CFE6D9",
+      "shape": "trumpet",
+      "petals": null,
+      "glow": true
+    }
+  },
+  {
+    "name": "Plumeria",
+    "region": "Pacific Islands",
+    "biome": "Tidepool",
+    "bloomForm": "Radial",
+    "signatureEssence": "Perfume-cloud+",
+    "cornerstonePair": null,
+    "traits": [
+      "Fragrant",
+      "Radial",
+      "Heat-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F8F0E0",
+      "accent": "#F2C55B",
+      "shape": "radial",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Night Jasmine",
+    "region": "South Asia",
+    "biome": "Tidepool",
+    "bloomForm": "Radial",
+    "signatureEssence": "Climbing",
+    "cornerstonePair": null,
+    "traits": [
+      "Climbing",
+      "Fragrant",
+      "Night-blooming"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4CA36B",
+      "bloom": "#F6F3E7",
+      "accent": "#F0A93F",
+      "shape": "radial",
+      "petals": 6,
+      "glow": false
+    }
+  },
+  {
+    "name": "Prickly Pear",
+    "region": "Mexico · SW US",
+    "biome": "Emberflats",
+    "bloomForm": "Cup",
+    "signatureEssence": "Heat-loving",
+    "cornerstonePair": null,
+    "traits": [
+      "Heat-loving",
+      "Fruiting",
+      "Drought-hardy"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#4C9A6B",
+      "bloom": "#F0C63A",
+      "accent": "#E8586A",
+      "shape": "cup",
+      "petals": 6,
+      "glow": false
+    }
+  },
+  {
+    "name": "King Protea",
+    "region": "South Africa",
+    "biome": "Emberflats",
+    "bloomForm": "Cluster",
+    "signatureEssence": "Fire-adapted",
+    "cornerstonePair": null,
+    "traits": [
+      "Fire-adapted",
+      "Towering",
+      "Nectar-rich"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#5B8A6B",
+      "bloom": "#F0A9B4",
+      "accent": "#F2D24B",
+      "shape": "cluster",
+      "petals": null,
+      "glow": false
+    }
+  },
+  {
+    "name": "Desert Marigold",
+    "region": "Sonoran Desert",
+    "biome": "Emberflats",
+    "bloomForm": "Radial",
+    "signatureEssence": "Drought-hardy",
+    "cornerstonePair": null,
+    "traits": [
+      "Drought-hardy",
+      "Everblooming",
+      "Sun-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#6E9A76",
+      "bloom": "#F2C233",
+      "accent": "#C98A2E",
+      "shape": "radial",
+      "petals": 13,
+      "glow": false
+    }
+  },
+  {
+    "name": "Torch Aloe",
+    "region": "Africa · Arabia",
+    "biome": "Emberflats",
+    "bloomForm": "Spike",
+    "signatureEssence": "Ember-glow",
+    "cornerstonePair": null,
+    "traits": [
+      "Ember-glow",
+      "Drought-hardy",
+      "Spike"
+    ],
+    "rarity": "Uncommon",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4C9A7B",
+      "bloom": "#F0673F",
+      "accent": "#F2B84B",
+      "shape": "spike",
+      "petals": null,
+      "glow": true
+    }
+  },
+  {
+    "name": "Chili Pepper",
+    "region": "Mesoamerica",
+    "biome": "Emberflats",
+    "bloomForm": "Star",
+    "signatureEssence": "Fruiting (fire)",
+    "cornerstonePair": null,
+    "traits": [
+      "Fruiting",
+      "Ember-glow",
+      "Heat-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#3E8E5A",
+      "bloom": "#F6F1E8",
+      "accent": "#8FB77A",
+      "shape": "star",
+      "petals": 5,
+      "glow": false
+    }
+  },
+  {
+    "name": "Saguaro Bloom",
+    "region": "Sonoran Desert",
+    "biome": "Emberflats",
+    "bloomForm": "Radial",
+    "signatureEssence": "Deep-rooted",
+    "cornerstonePair": null,
+    "traits": [
+      "Deep-rooted",
+      "Towering",
+      "Night-blooming"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": false,
+    "ancient": false,
+    "render": {
+      "stem": "#4C9A6B",
+      "bloom": "#F6F1E8",
+      "accent": "#F2D24B",
+      "shape": "radial",
+      "petals": 12,
+      "glow": false
+    }
+  },
+  {
+    "name": "Pumpkin Flower",
+    "region": "The Americas",
+    "biome": "Emberflats",
+    "bloomForm": "Trumpet",
+    "signatureEssence": "Vining",
+    "cornerstonePair": null,
+    "traits": [
+      "Vining",
+      "Fruiting",
+      "Sun-loving"
+    ],
+    "rarity": "Common",
+    "cornerstone": false,
+    "fruiting": true,
+    "ancient": false,
+    "render": {
+      "stem": "#4C9A6B",
+      "bloom": "#F0913F",
+      "accent": "#F2C55B",
+      "shape": "trumpet",
+      "petals": null,
+      "glow": false
+    }
+  }
+]
